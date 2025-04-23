@@ -3,15 +3,43 @@ package com.example.scb11
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 class MainActivity : AppCompatActivity() {
+    var TAG = MainActivity::class.java.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i(TAG,"egg-created-mem allocated")
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.v(TAG,"hatched-started-visble-handling clicks")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.w(TAG,"wokenup-resumed--restore app state")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e(TAG,"sleep-paused--store app state")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG,"hibernated--stopped--release resources")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG,"destroyed--cleanup")
 
     }
 
