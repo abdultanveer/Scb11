@@ -1,16 +1,26 @@
 package com.example.scb11
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
+//NEFT - account no-ifsc code,
+//transfer -- mobile no/email address[UPI]
+//server --map upi id /mobile no  to the account no and ifsc code NPCI
 
 class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
+        //R.phnos.abdul
+
         Log.i(TAG,"egg-created-mem allocated")
 
     }
@@ -45,5 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     fun handleSignin(view: View) {
         Log.i("MainActivity","signing in....")
+        var hIntention = Intent(this,HomeActivity::class.java)
+        startActivity(hIntention)
     }
 }
