@@ -29,8 +29,19 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.v(TAG,"hatched-started-visble-handling clicks")
+       var c =  add(10,20)
 
     }
+
+    private fun add(i: Int, i1: Int):Int {
+        var c = 10
+        repeat(5){
+            c+=5
+        }
+        var d = c*10-i+45
+        return i+i1+c
+    }
+
 
     override fun onResume() {
         super.onResume()
