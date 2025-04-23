@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         //https://developer.android.com/guide/components/intents-common
         var dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:12345678")) //implicit intent
         startActivity(dialIntent)
+        throw NullPointerException("crash demo")
+
     }
 
     private fun startHome() {
