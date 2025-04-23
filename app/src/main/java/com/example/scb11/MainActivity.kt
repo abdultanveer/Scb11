@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
 
     fun handleSignin(view: View) {
         Log.i("MainActivity","signing in....")
+        var data = "abdul ansari"
         var hIntention = Intent(this,HomeActivity::class.java)
+        hIntention.putExtra("name",data)
         startActivity(hIntention)
     }
 }

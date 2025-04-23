@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -36,6 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/tvHome"
+        app:layout_constraintTop_toBottomOf="@+id/tvHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
