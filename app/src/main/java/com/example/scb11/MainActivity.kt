@@ -1,6 +1,7 @@
 package com.example.scb11
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -54,10 +55,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun handleSignin(view: View) {
-        Log.i("MainActivity","signing in....")
+        //startHome()
+        //https://developer.android.com/guide/components/intents-common
+        var dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:12345678")) //implicit intent
+        startActivity(dialIntent)
+    }
+
+    private fun startHome() {
+        Log.i("MainActivity", "signing in....")
         var data = "abdul ansari"
-        var hIntention = Intent(this,HomeActivity::class.java)
-        hIntention.putExtra("name",data)
+        var hIntention = Intent(this, HomeActivity::class.java)//explicit intent
+        hIntention.putExtra("name", data)
         startActivity(hIntention)
     }
 }
