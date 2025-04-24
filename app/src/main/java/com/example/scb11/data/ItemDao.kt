@@ -18,6 +18,6 @@ interface ItemDao {
     suspend fun delete(item: Item)
 
 
-    fun getItem(id: Int): Flow<Item>
-    fun getItems(): Flow<List<Item>>
+//    fun getItem(id: Int): Flow<Item>
+//    fun getItems(): Flow<List<Item>>
 }

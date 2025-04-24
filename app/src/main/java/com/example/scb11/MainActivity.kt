@@ -9,6 +9,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.scb11.data.Item
+import com.example.scb11.data.ItemDao
+import com.example.scb11.data.ItemRoomDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 //NEFT - account no-ifsc code,
 //transfer -- mobile no/email address[UPI]
@@ -18,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
     lateinit var incrementTextView: TextView
     lateinit var viewModel: MainViewmodel
+
+    lateinit var dao: ItemDao
 
     var secsObserver : Observer<Int> = object :Observer<Int>{
         override fun onChanged(value: Int) {
@@ -33,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         viewModel._seconds.observe(this, secsObserver);  //registering phno/subscribe button/bellicon/
         incrementTextView = findViewById(R.id.tvIncrement)
         incrementTextView.setText(""+viewModel._seconds)
+
+        var  database = ItemRoomDatabase.getDatabase(this)
+        dao = database.itemDao()
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
         //R.phnos.abdul
 
@@ -103,5 +113,12 @@ class MainActivity : AppCompatActivity() {
 
        // viewModel.incrementCount()
         //incrementTextView.setText(""+viewModel._seconds)
+    }
+
+    fun insertDb(view: View) {
+        var item = Item(11,"fruits",11.11,111)
+        GlobalScope.launch {
+            dao.insert(item)
+        }
     }
 }
