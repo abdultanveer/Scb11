@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainViewmodel::class.java]
         incrementTextView = findViewById(R.id.tvIncrement)
-        incrementTextView.setText(""+viewModel.count)
+        incrementTextView.setText(""+viewModel._seconds)
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
         //R.phnos.abdul
 
@@ -87,7 +87,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun incrementCount(view: View) {
-        viewModel.incrementCount()
-        incrementTextView.setText(""+viewModel.count)
+        viewModel.startTimer()
+
+       // viewModel.incrementCount()
+        incrementTextView.setText(""+viewModel._seconds)
     }
 }
