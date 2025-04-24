@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 //NEFT - account no-ifsc code,
@@ -17,10 +18,19 @@ class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
     lateinit var incrementTextView: TextView
     lateinit var viewModel: MainViewmodel
+
+    var secsObserver : Observer<Int> = object :Observer<Int>{
+        override fun onChanged(value: Int) {
+            //receiving the update/notification
+        incrementTextView.setText(value.toString())
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainViewmodel::class.java]
+        viewModel._seconds.observe(this, secsObserver);  //registering phno/subscribe button/bellicon/
         incrementTextView = findViewById(R.id.tvIncrement)
         incrementTextView.setText(""+viewModel._seconds)
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
@@ -86,10 +96,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(hIntention)
     }
 
+
+
     fun incrementCount(view: View) {
         viewModel.startTimer()
 
        // viewModel.incrementCount()
-        incrementTextView.setText(""+viewModel._seconds)
+        //incrementTextView.setText(""+viewModel._seconds)
     }
 }
