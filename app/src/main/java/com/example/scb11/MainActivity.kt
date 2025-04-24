@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.scb11.data.Item
 import com.example.scb11.data.ItemDao
 import com.example.scb11.data.ItemRoomDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 //NEFT - account no-ifsc code,
@@ -119,6 +121,14 @@ class MainActivity : AppCompatActivity() {
         var item = Item(11,"fruits",11.11,111)
         GlobalScope.launch {
             dao.insert(item)
+        }
+    }
+
+    fun getData(view: View) {
+        GlobalScope.launch(Dispatchers.Main) {
+            var item = dao.getItems().first()
+
+            incrementTextView.setText(item.toString())
         }
     }
 }
