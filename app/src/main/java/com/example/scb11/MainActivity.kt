@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 
 //NEFT - account no-ifsc code,
 //transfer -- mobile no/email address[UPI]
@@ -15,12 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
     lateinit var incrementTextView: TextView
-var count = 0
+    lateinit var viewModel: MainViewmodel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this)[MainViewmodel::class.java]
         incrementTextView = findViewById(R.id.tvIncrement)
-        incrementTextView.setText(""+count)
+        incrementTextView.setText(""+viewModel.count)
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
         //R.phnos.abdul
 
@@ -85,7 +87,7 @@ var count = 0
     }
 
     fun incrementCount(view: View) {
-        count++
-        incrementTextView.setText(""+count)
+        viewModel.incrementCount()
+        incrementTextView.setText(""+viewModel.count)
     }
 }
