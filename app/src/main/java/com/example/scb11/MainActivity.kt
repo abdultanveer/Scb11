@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 //NEFT - account no-ifsc code,
@@ -13,12 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
-
-
+    lateinit var incrementTextView: TextView
+var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        incrementTextView = findViewById(R.id.tvIncrement)
+        incrementTextView.setText(""+count)
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
         //R.phnos.abdul
 
@@ -80,5 +82,10 @@ class MainActivity : AppCompatActivity() {
         var hIntention = Intent(this, HomeActivity::class.java)//explicit intent
         hIntention.putExtra("name", data)
         startActivity(hIntention)
+    }
+
+    fun incrementCount(view: View) {
+        count++
+        incrementTextView.setText(""+count)
     }
 }

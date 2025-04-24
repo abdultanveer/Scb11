@@ -1,5 +1,6 @@
 package com.example.scb11
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 
 class LangsAdapter(var languages: Array<String>) :RecyclerView.Adapter<LViewHolder>() {
 var TAG = LangsAdapter::class.java.simpleName
+  lateinit  var context:Context
     //meeraj -- bought a visiting card
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LViewHolder {
         Log.i(TAG,"meeraj bought a visiting card and gave it to hrishikesh")
         //inflating the xml
+        context = parent.context
         var visitingCard = LayoutInflater.from(parent.context).inflate(R.layout.visiting_card,parent,false)
         return LViewHolder(visitingCard)
     }
+//context  == history
 
     //asha writing data on visiting card
     override fun onBindViewHolder(hrishiholder: LViewHolder, position: Int) {
