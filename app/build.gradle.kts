@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.livedata.ktx)
     //kapt ("androidx.room:room-compiler:2.6.0")
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.core.ktx)

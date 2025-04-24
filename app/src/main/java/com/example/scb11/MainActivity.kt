@@ -9,8 +9,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.scb11.data.Item
 import com.example.scb11.data.ItemDao
+import com.example.scb11.data.ItemRepository
 import com.example.scb11.data.ItemRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     var TAG = MainActivity::class.java.simpleName
     lateinit var incrementTextView: TextView
     lateinit var viewModel: MainViewmodel
+    lateinit var recyclerView: RecyclerView
 
     lateinit var dao: ItemDao
 
@@ -38,13 +42,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this)[MainViewmodel::class.java]
-        viewModel._seconds.observe(this, secsObserver);  //registering phno/subscribe button/bellicon/
+        recyclerView = findViewById(R.id.recyclerView2)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+       // viewModel = ViewModelProvider(this)[MainViewmodel::class.java]
+        //viewModel._seconds.observe(this, secsObserver);  //registering phno/subscribe button/bellicon/
         incrementTextView = findViewById(R.id.tvIncrement)
-        incrementTextView.setText(""+viewModel._seconds)
+       // incrementTextView.setText(""+viewModel._seconds)
 
         var  database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
+        val userRepository = ItemRepository(dao)
+        val viewModelFactory = MainViewmodel.ItemViewModelFactory(userRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewmodel::class.java)
+
+        var adapter = LangsAdapter()
+        recyclerView.adapter = adapter
+        viewModel.allItems.observe(this) { words ->
+            // Update the cached copy of the words in the adapter.
+            words.let { adapter.submitList(it) }
+        }
+//INSERT INTO Item (id, name, itemPrice,quantityInStock)
+//VALUES (33, "groceries", 33.22,3);
+
         //R.java --maps names to nos -Register-layout/phnos/name-phno   abdul-9880979732
         //R.phnos.abdul
 

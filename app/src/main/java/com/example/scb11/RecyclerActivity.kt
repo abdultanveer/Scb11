@@ -24,9 +24,9 @@ class RecyclerActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        var ladapter:LangsAdapter = LangsAdapter(languages)
+       // var ladapter:LangsAdapter = LangsAdapter(languages)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter  = ladapter
+      //  recyclerView.adapter  = ladapter
 
     }
 }

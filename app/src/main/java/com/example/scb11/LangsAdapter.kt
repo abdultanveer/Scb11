@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scb11.data.Item
 
-class LangsAdapter(var languages: Array<String>) :RecyclerView.Adapter<LViewHolder>() {
-var TAG = LangsAdapter::class.java.simpleName
+class LangsAdapter() : ListAdapter<Item, LViewHolder>(LViewHolder.WordsComparator()) {
+
+    var TAG = LangsAdapter::class.java.simpleName
   lateinit  var context:Context
     //meeraj -- bought a visiting card
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LViewHolder {
@@ -19,19 +23,19 @@ var TAG = LangsAdapter::class.java.simpleName
         var visitingCard = LayoutInflater.from(parent.context).inflate(R.layout.visiting_card,parent,false)
         return LViewHolder(visitingCard)
     }
+
+
 //context  == history
 
     //asha writing data on visiting card
     override fun onBindViewHolder(hrishiholder: LViewHolder, position: Int) {
-        Log.i(TAG,"asha is writig --"+languages.get(position))
-        hrishiholder.visitingCardTv.setText(languages.get(position))
+       // Log.i(TAG,"asha is writig --"+languages.get(position))
+        val current = getItem(position)
+        hrishiholder.visitingCardTv.setText(current.itemName)
+
     }
 
-    //madhavi -- no of items in dataset
-    override fun getItemCount(): Int {
-        Log.i(TAG,"madhavi counted --"+languages.size)
-      return  languages.size
-    }
+
 }
 
 //hrishikesh --visiting card holder[reserve cards]
@@ -41,5 +45,25 @@ init {
 }
     var visitingCardTv: TextView = vCard.findViewById(R.id.tvVisitingCard)
 
+    fun bind(text: String?) {
+        visitingCardTv.text = text
+    }
 
+    companion object {
+        fun create(parent: ViewGroup): LViewHolder {
+            val view: View = LayoutInflater.from(parent.context)
+                .inflate(R.layout.visiting_card, parent, false)
+            return LViewHolder(view)
+        }
+    }
+
+    class WordsComparator : DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem === newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem.id == newItem.id
+        }
+    }
 }
