@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>urdu</item>
+        <item>kannada</item>
+        <item>tamil</item>
+        <item>telgu</item>
+        <item>malayalam</item>
+        <item>arabic</item>
+        <item>french</item>
+        <item>russian</item>
+        <item>chinese</item>
+
+    </string-array>
+</resources>
