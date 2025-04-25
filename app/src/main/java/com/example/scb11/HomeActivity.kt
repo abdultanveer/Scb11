@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.scb11.network.MarsApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class HomeActivity : AppCompatActivity() {
     var homeTv: TextView? = null
@@ -27,8 +28,12 @@ class HomeActivity : AppCompatActivity() {
 //        String con = contactEt.getText().toString();
 //        homeTv.setText(con);
         GlobalScope.launch {
-            val listResult = MarsApi.retrofitService.getPhotos()
-            Log.i("homeactivity",listResult.toString())
+            val listResult = try {
+            MarsApi.retrofitService.getPhotos()
+        } catch (e: IOException) {
+            TODO("Not yet implemented")
+        }
+            Log.i("homeactivity","id--"+listResult.get(0).id+"url--"+listResult.get(0).imgSrc)
 
         }
     }
