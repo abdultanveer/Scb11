@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.example.scb11.network.MarsApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,6 +35,8 @@ class HomeActivity : AppCompatActivity() {
         } catch (e: IOException) {
             TODO("Not yet implemented")
         }
+            var imageView:ImageView = findViewById(R.id.imageView)
+            imageView.load(listResult.get(0).imgSrc)
             Log.i("homeactivity","id--"+listResult.get(0).id+"url--"+listResult.get(0).imgSrc)
 
         }
