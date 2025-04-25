@@ -19,6 +19,7 @@ import org.junit.runner.RunWith
 class TestHomeActivity {
 
     @Rule
+    @JvmField
     var mActivityScenarioRule: ActivityScenarioRule<HomeActivity> = ActivityScenarioRule(
         HomeActivity::class.java
     )
