@@ -3,29 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="#def987"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#def987"
     tools:context=".HomeActivity">
 
     <EditText
         android:id="@+id/etContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
         android:layout_marginTop="57dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="ennter contact"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/btnGet"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="27dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/etContact"
         app:layout_constraintTop_toBottomOf="@+id/etContact" />
@@ -34,9 +33,9 @@
         android:id="@+id/btnGet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="get"
+        android:layout_marginEnd="16dp"
         android:onClick="getContact"
-        app:layout_constraintStart_toStartOf="@+id/tvHome"
-        app:layout_constraintTop_toBottomOf="@+id/tvHome" />
+        android:text="get"
+        app:layout_constraintBaseline_toBaselineOf="@+id/etContact"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
