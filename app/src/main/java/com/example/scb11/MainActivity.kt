@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun add(i: Int, i1: Int):Int {
+    private fun add(i: Int, i1: Int):Int {  //line 81 = method signature
+        //line 82-88 method body
         var c = 10
         repeat(5){
             c+=5

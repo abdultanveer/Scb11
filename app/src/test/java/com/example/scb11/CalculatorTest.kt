@@ -2,6 +2,7 @@ package com.example.scb11
 
 import junit.framework.TestCase
 
+//run on laptop jvm -- java environment
 class CalculatorTest : TestCase() {
     lateinit var calc:Calculator
 

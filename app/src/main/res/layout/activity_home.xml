@@ -9,14 +9,14 @@
     tools:context=".HomeActivity">
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/etContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="73dp"
         android:layout_marginTop="57dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:hint="ennter contact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,15 +27,16 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="39dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/editTextText2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintStart_toStartOf="@+id/etContact"
+        app:layout_constraintTop_toBottomOf="@+id/etContact" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="Button"
+        android:text="get"
+        android:onClick="getContact"
         app:layout_constraintStart_toStartOf="@+id/tvHome"
         app:layout_constraintTop_toBottomOf="@+id/tvHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
