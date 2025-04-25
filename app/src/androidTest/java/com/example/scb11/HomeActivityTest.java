@@ -50,7 +50,7 @@ public class HomeActivityTest {
         appCompatEditText.perform(replaceText("abdul ansari"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button2), withText("get"),
+                allOf(withId(R.id.btnGet), withText("get"),
                         childAtPosition(
                                 allOf(withId(R.id.main),
                                         childAtPosition(
