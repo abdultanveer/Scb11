@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Scb11"
 include(":app")
+include(":app:lib")
